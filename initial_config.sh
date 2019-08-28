@@ -9,6 +9,12 @@
 # Change timezone to Eastern time
 sudo timedatectl set-timezone America/New_York
 
+# Download the Microsoft repository GPG keys
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+
+# Register the Microsoft repository GPG keys
+sudo dpkg -i packages-microsoft-prod.deb
+
 # Add multiverse repositories to Ubuntu Server 18.04
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
@@ -24,3 +30,6 @@ sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::AutocleanInt
 sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Unattended-Upgrade "1";'
 # sed uses RegEx to replace words and doesn't always recognize the '\t' for Tab
 sudo sed -i -e 's+//\t"${distro_id}:${distro_codename}-+\t"${distro_id}:${distro_codename}-+g' /etc/apt/apt.conf.d/50unattended-upgrades
+
+# Install PowerShell
+sudo apt-get install PowerShell
