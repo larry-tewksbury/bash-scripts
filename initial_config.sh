@@ -24,10 +24,14 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 # Set the server up for automatic updates
 # Additional info is at https://help.ubuntu.com/lts/serverguide/automatic-updates.html
-sudo tee /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Update-Package-Lists "1";'
-sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Download-Upgradeable-Packages "1";'
-sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::AutocleanInterval "7";'
-sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Unattended-Upgrade "1";'
+# sudo tee /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Update-Package-Lists "1";'
+# sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Download-Upgradeable-Packages "1";'
+# sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::AutocleanInterval "7";'
+# sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades <<< 'APT::Periodic::Unattended-Upgrade "1";'
+echo 'APT::Periodic::Update-Package-Lists "1";' > /etc/apt/apt.conf.d/20auto-upgrades
+echo 'APT::Periodic::Download-Upgradeable-Packages "1";' >> /etc/apt/apt.conf.d/20auto-upgrades
+echo 'APT::Periodic::AutocleanInterval "7";' >> /etc/apt/apt.conf.d/20auto-upgrades
+echo 'APT::Periodic::Unattended-Upgrade "1";' >> /etc/apt/apt.conf.d/20auto-upgrades
 # sed uses RegEx to replace words and doesn't always recognize the '\t' for Tab
 sudo sed -i -e 's+//\t"${distro_id}:${distro_codename}-+\t"${distro_id}:${distro_codename}-+g' /etc/apt/apt.conf.d/50unattended-upgrades
 
