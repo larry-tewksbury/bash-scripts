@@ -35,5 +35,8 @@ echo 'APT::Periodic::Unattended-Upgrade "1";' >> /etc/apt/apt.conf.d/20auto-upgr
 # sed uses RegEx to replace words and doesn't always recognize the '\t' for Tab
 sudo sed -i -e 's+//\t"${distro_id}:${distro_codename}-+\t"${distro_id}:${distro_codename}-+g' /etc/apt/apt.conf.d/50unattended-upgrades
 
+# Suppress the task timeout messages Ubuntu spams
+echo 0 > /proc/sys/kernel/hung_task_timeout_secs
+
 # Install PowerShell
 sudo apt-get install PowerShell
