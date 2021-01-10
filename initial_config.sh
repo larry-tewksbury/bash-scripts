@@ -1,21 +1,21 @@
 #!/bin/bash
 #
-# Typical Ubuntu 18.04 LTS initial server setup
+# Typical Ubuntu 20.04 LTS initial server setup
 # Adds repositories and changes to ET timezone
 #
 # Created 11/12/2018 by LTewksbury
-#
+# Changed 1/10/2021 by LTewksbury - 20.04 modifications
 
 # Change timezone to Eastern time
 sudo timedatectl set-timezone America/New_York
 
 # Download the Microsoft repository GPG keys
-wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
+wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 
 # Register the Microsoft repository GPG keys
 sudo dpkg -i packages-microsoft-prod.deb
 
-# Add multiverse repositories to Ubuntu Server 18.04
+# Add multiverse repositories to Ubuntu Server 20.04
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
 
