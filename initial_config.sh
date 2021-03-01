@@ -15,6 +15,9 @@ wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-pr
 # Register the Microsoft repository GPG keys
 sudo dpkg -i packages-microsoft-prod.deb
 
+# Install the Unattended-Upgrades package
+sudo apt-get install unattended-upgrades
+
 # Add multiverse repositories to Ubuntu Server 20.04
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
